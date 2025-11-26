@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lokesh Narne | AI Engineer & Full Stack Dev</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Outfit', 'sans-serif'],
+              mono: ['Space Grotesk', 'monospace'],
+            },
+            colors: {
+              glass: {
+                border: 'rgba(255, 255, 255, 0.08)',
+                surface: 'rgba(255, 255, 255, 0.02)',
+                highlight: 'rgba(255, 255, 255, 0.05)',
+              },
+              cyber: {
+                dark: '#050505',
+                panel: '#0a0a0a',
+                accent: '#00f0ff',
+                secondary: '#7000df',
+                dim: 'rgba(255,255,255,0.05)',
+              }
+            },
+            animation: {
+              'blob': 'blob 20s infinite alternate',
+              'float': 'float 8s ease-in-out infinite',
+              'spin-slow': 'spin 20s linear infinite',
+              'spin-reverse-slow': 'spin-reverse 25s linear infinite',
+              'shimmer': 'shimmer 8s linear infinite',
+              'tumble': 'tumble 25s linear infinite',
+              'tumble-reverse': 'tumble-reverse 30s linear infinite',
+            },
+            keyframes: {
+              blob: {
+                '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                '100%': { transform: 'translate(0px, 0px) scale(1)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              'spin-reverse': {
+                'from': { transform: 'rotate(360deg)' },
+                'to': { transform: 'rotate(0deg)' },
+              },
+              shimmer: {
+                '0%': { backgroundPosition: '200% center' },
+                '100%': { backgroundPosition: '-200% center' },
+              },
+              tumble: {
+                '0%': { transform: 'rotate3d(1, 1, 1, 0deg)' },
+                '50%': { transform: 'rotate3d(1, 1, 1, 180deg)' },
+                '100%': { transform: 'rotate3d(1, 1, 1, 360deg)' },
+              },
+              'tumble-reverse': {
+                '0%': { transform: 'rotate3d(1, -1, 0, 0deg)' },
+                '50%': { transform: 'rotate3d(1, -1, 0, -180deg)' },
+                '100%': { transform: 'rotate3d(1, -1, 0, -360deg)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #030303;
+        color: #ffffff;
+        overflow-x: hidden;
+      }
+      
+      /* Noise Texture for Glass Realism */
+      .bg-noise {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 50;
+        opacity: 0.02;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+
+      .perspective-1000 {
+        perspective: 1000px;
+      }
+      .preserve-3d {
+        transform-style: preserve-3d;
+      }
+      
+      /* Liquid Glass Utilities */
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.02);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      }
+      
+      /* Liquid Text Effect - Smoother */
+      .text-liquid {
+        background: linear-gradient(
+          120deg,
+          #ffffff 20%,
+          #00f0ff 50%,
+          #ffffff 80%
+        );
+        background-size: 200% auto;
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+        animation: shimmer 8s linear infinite;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #050505;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(0, 240, 255, 0.3);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.4.2"
+  }
+}
+</script>
+</head>
+  <body>
+    <div class="bg-noise"></div>
+    <div id="root"></div>
+  </body>
+</html>
